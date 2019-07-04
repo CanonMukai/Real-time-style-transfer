@@ -9,3 +9,4 @@ logs/
 checkpoints_original/
 checkpoints_v2/
 github_img/
+.env/
