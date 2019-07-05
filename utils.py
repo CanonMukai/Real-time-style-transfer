@@ -9,7 +9,7 @@ import sys
 import scipy.misc
 import numpy as np
 import imageio
-from skimage import transform
+import skimage
 
 
 def imread(path, is_gray_scale=False, img_size=None):
@@ -22,14 +22,14 @@ def imread(path, is_gray_scale=False, img_size=None):
             img = np.dstack((img, img, img))
 
     if img_size is not None:
-        img = transform.resize(img, img_size)
+        img = skimage.transform.resize(img, img_size)
 
     return img
 
 
 def imsave(path, img):
     img = np.clip(img, 0, 255).astype(np.uint8)
-    imageio.imwrite((path, img)
+    imageio.imwrite(path, img)
 
 
 def all_files_under(path, extension=None, append_path=True, sort=True):
