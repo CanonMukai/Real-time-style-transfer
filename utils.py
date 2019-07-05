@@ -14,9 +14,11 @@ import skimage
 
 def imread(path, is_gray_scale=False, img_size=None):
     if is_gray_scale:
-        img = imageio.imread(path, as_gray=True).astype(np.float32)
+        img = imageio.imread(path, as_gray=True)
+
     else:
-        img = imageio.imread(path, pilmode='RGB').astype(np.float32)
+        # img = imageio.imread(path, pilmode='RGB')
+        img = imageio.imread(path)
 
         if not (img.ndim == 3 and img.shape[2] == 3):
             img = np.dstack((img, img, img))
