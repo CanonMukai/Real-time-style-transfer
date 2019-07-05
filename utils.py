@@ -8,8 +8,6 @@ import os
 import sys
 import scipy.misc
 import numpy as np
-import imageio
-import skimage
 
 
 def imread(path, is_gray_scale=False, img_size=None):
