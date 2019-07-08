@@ -12,3 +12,5 @@ github_img/
 .env/
 data/
 results/
+examples/results/*
+examples/content/*
