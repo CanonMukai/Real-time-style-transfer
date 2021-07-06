@@ -1,0 +1,401 @@
+210705 - 210706
+
+style: tokikake.jpg
+
+```
+$ python main.py --style_img ./examples/style/tokikake.jpg \
+  --train_path ./data/train2014 \
+  --test_path ./examples/content \
+  --vgg_path ./data/imagenet-vgg-verydeep-19.mat
+```
+epochs: 2
+batch_size: 4
+
+5000iterあたりで切った。
+おそらく4000までのモデルが保存されている。
+自分のMacのスペックだと4000iter回すのにちょうど1日かかる。
+
+
+以下log。
+
+(anime3) mukaikanonnoMacBook-Pro:Real-time-style-transfer canon$ python main.py --style_img ./examples/style/tokikake.jpg --train_path ./data/train2014 --test_path ./examples/content --vgg_path ./data/imagenet-vgg-verydeep-19.mat
+./examples/style/tokikake.jpg
+tokikake
+2021-07-05 16:31:08.157707: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2021-07-05 16:31:08.166511: I tensorflow/core/common_runtime/process_util.cc:71] Creating new thread pool with default inter op setting: 4. Tune using inter_op_parallelism_threads for best performance.
+WARNING:tensorflow:From /opt/anaconda3/envs/anime3/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+transfer/conv1/conv2d/BiasAdd   [None, 256, 256, 32]
+transfer/conv2/conv2d/BiasAdd   [None, 128, 128, 64]
+transfer/conv3/conv2d/BiasAdd   [None, 64, 64, 128]
+transfer/res_blocks/res1/layer1/conv/BiasAdd   [None, 64, 64, 128]
+transfer/res_blocks/res1/layer2/conv/BiasAdd   [None, 64, 64, 128]
+transfer/res_blocks/res2/layer1/conv/BiasAdd   [None, 64, 64, 128]
+transfer/res_blocks/res2/layer2/conv/BiasAdd   [None, 64, 64, 128]
+transfer/res_blocks/res3/layer1/conv/BiasAdd   [None, 64, 64, 128]
+transfer/res_blocks/res3/layer2/conv/BiasAdd   [None, 64, 64, 128]
+transfer/res_blocks/res4/layer1/conv/BiasAdd   [None, 64, 64, 128]
+transfer/res_blocks/res4/layer2/conv/BiasAdd   [None, 64, 64, 128]
+transfer/res_blocks/res5/layer1/conv/BiasAdd   [None, 64, 64, 128]
+transfer/res_blocks/res5/layer2/conv/BiasAdd   [None, 64, 64, 128]
+transfer/conv4/conv2d/BiasAdd   [None, 256, 256, 3]
+WARNING:tensorflow:From /opt/anaconda3/envs/anime3/lib/python3.6/site-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+WARNING:tensorflow:Passing a `GraphDef` to the SummaryWriter is deprecated. Pass a `Graph` object instead, such as `sess.graph`.
+---------
+Variables: name (type shape) [size]
+---------
+transfer/conv1/conv2d/w:0 (float32_ref 9x9x3x32) [7776, bytes: 31104]
+transfer/conv1/conv2d/biases:0 (float32_ref 32) [32, bytes: 128]
+transfer/conv1/instance_norm/scale:0 (float32_ref 32) [32, bytes: 128]
+transfer/conv1/instance_norm/offset:0 (float32_ref 32) [32, bytes: 128]
+transfer/conv2/conv2d/w:0 (float32_ref 3x3x32x64) [18432, bytes: 73728]
+transfer/conv2/conv2d/biases:0 (float32_ref 64) [64, bytes: 256]
+transfer/conv2/instance_norm/scale:0 (float32_ref 64) [64, bytes: 256]
+transfer/conv2/instance_norm/offset:0 (float32_ref 64) [64, bytes: 256]
+transfer/conv3/conv2d/w:0 (float32_ref 3x3x64x128) [73728, bytes: 294912]
+transfer/conv3/conv2d/biases:0 (float32_ref 128) [128, bytes: 512]
+transfer/conv3/instance_norm/scale:0 (float32_ref 128) [128, bytes: 512]
+transfer/conv3/instance_norm/offset:0 (float32_ref 128) [128, bytes: 512]
+transfer/res_blocks/res1/layer1/conv/w:0 (float32_ref 3x3x128x128) [147456, bytes: 589824]
+transfer/res_blocks/res1/layer1/conv/biases:0 (float32_ref 128) [128, bytes: 512]
+transfer/res_blocks/res1/layer1/norm/scale:0 (float32_ref 128) [128, bytes: 512]
+transfer/res_blocks/res1/layer1/norm/offset:0 (float32_ref 128) [128, bytes: 512]
+transfer/res_blocks/res1/layer2/conv/w:0 (float32_ref 3x3x128x128) [147456, bytes: 589824]
+transfer/res_blocks/res1/layer2/conv/biases:0 (float32_ref 128) [128, bytes: 512]
+transfer/res_blocks/res1/layer2/norm/scale:0 (float32_ref 128) [128, bytes: 512]
+transfer/res_blocks/res1/layer2/norm/offset:0 (float32_ref 128) [128, bytes: 512]
+transfer/res_blocks/res2/layer1/conv/w:0 (float32_ref 3x3x128x128) [147456, bytes: 589824]
+transfer/res_blocks/res2/layer1/conv/biases:0 (float32_ref 128) [128, bytes: 512]
+transfer/res_blocks/res2/layer1/norm/scale:0 (float32_ref 128) [128, bytes: 512]
+transfer/res_blocks/res2/layer1/norm/offset:0 (float32_ref 128) [128, bytes: 512]
+transfer/res_blocks/res2/layer2/conv/w:0 (float32_ref 3x3x128x128) [147456, bytes: 589824]
+transfer/res_blocks/res2/layer2/conv/biases:0 (float32_ref 128) [128, bytes: 512]
+transfer/res_blocks/res2/layer2/norm/scale:0 (float32_ref 128) [128, bytes: 512]
+transfer/res_blocks/res2/layer2/norm/offset:0 (float32_ref 128) [128, bytes: 512]
+transfer/res_blocks/res3/layer1/conv/w:0 (float32_ref 3x3x128x128) [147456, bytes: 589824]
+transfer/res_blocks/res3/layer1/conv/biases:0 (float32_ref 128) [128, bytes: 512]
+transfer/res_blocks/res3/layer1/norm/scale:0 (float32_ref 128) [128, bytes: 512]
+transfer/res_blocks/res3/layer1/norm/offset:0 (float32_ref 128) [128, bytes: 512]
+transfer/res_blocks/res3/layer2/conv/w:0 (float32_ref 3x3x128x128) [147456, bytes: 589824]
+transfer/res_blocks/res3/layer2/conv/biases:0 (float32_ref 128) [128, bytes: 512]
+transfer/res_blocks/res3/layer2/norm/scale:0 (float32_ref 128) [128, bytes: 512]
+transfer/res_blocks/res3/layer2/norm/offset:0 (float32_ref 128) [128, bytes: 512]
+transfer/res_blocks/res4/layer1/conv/w:0 (float32_ref 3x3x128x128) [147456, bytes: 589824]
+transfer/res_blocks/res4/layer1/conv/biases:0 (float32_ref 128) [128, bytes: 512]
+transfer/res_blocks/res4/layer1/norm/scale:0 (float32_ref 128) [128, bytes: 512]
+transfer/res_blocks/res4/layer1/norm/offset:0 (float32_ref 128) [128, bytes: 512]
+transfer/res_blocks/res4/layer2/conv/w:0 (float32_ref 3x3x128x128) [147456, bytes: 589824]
+transfer/res_blocks/res4/layer2/conv/biases:0 (float32_ref 128) [128, bytes: 512]
+transfer/res_blocks/res4/layer2/norm/scale:0 (float32_ref 128) [128, bytes: 512]
+transfer/res_blocks/res4/layer2/norm/offset:0 (float32_ref 128) [128, bytes: 512]
+transfer/res_blocks/res5/layer1/conv/w:0 (float32_ref 3x3x128x128) [147456, bytes: 589824]
+transfer/res_blocks/res5/layer1/conv/biases:0 (float32_ref 128) [128, bytes: 512]
+transfer/res_blocks/res5/layer1/norm/scale:0 (float32_ref 128) [128, bytes: 512]
+transfer/res_blocks/res5/layer1/norm/offset:0 (float32_ref 128) [128, bytes: 512]
+transfer/res_blocks/res5/layer2/conv/w:0 (float32_ref 3x3x128x128) [147456, bytes: 589824]
+transfer/res_blocks/res5/layer2/conv/biases:0 (float32_ref 128) [128, bytes: 512]
+transfer/res_blocks/res5/layer2/norm/scale:0 (float32_ref 128) [128, bytes: 512]
+transfer/res_blocks/res5/layer2/norm/offset:0 (float32_ref 128) [128, bytes: 512]
+transfer/trans_conv1/deconv2d/w:0 (float32_ref 3x3x64x128) [73728, bytes: 294912]
+transfer/trans_conv1/deconv2d/biases:0 (float32_ref 64) [64, bytes: 256]
+transfer/trans_conv1/instance_norm/scale:0 (float32_ref 64) [64, bytes: 256]
+transfer/trans_conv1/instance_norm/offset:0 (float32_ref 64) [64, bytes: 256]
+transfer/trans_conv2/deconv2d/w:0 (float32_ref 3x3x32x64) [18432, bytes: 73728]
+transfer/trans_conv2/deconv2d/biases:0 (float32_ref 32) [32, bytes: 128]
+transfer/trans_conv2/instance_norm/scale:0 (float32_ref 32) [32, bytes: 128]
+transfer/trans_conv2/instance_norm/offset:0 (float32_ref 32) [32, bytes: 128]
+transfer/conv4/conv2d/w:0 (float32_ref 9x9x32x3) [7776, bytes: 31104]
+transfer/conv4/conv2d/biases:0 (float32_ref 3) [3, bytes: 12]
+transfer/conv4/instance_norm/scale:0 (float32_ref 3) [3, bytes: 12]
+transfer/conv4/instance_norm/offset:0 (float32_ref 3) [3, bytes: 12]
+Total size of variables: 1679241
+Total bytes of variables: 6716964
+=====================================
+              Model saved!           
+=====================================
+
+save path: ./examples/temp/tokikake/chicago_0.png
+test_target: ./examples/content/chicago.jpg
+transfer/conv1/conv2d/BiasAdd   [None, 474, 712, 32]
+transfer/conv2/conv2d/BiasAdd   [None, 237, 356, 64]
+transfer/conv3/conv2d/BiasAdd   [None, 119, 178, 128]
+transfer/res_blocks/res1/layer1/conv/BiasAdd   [None, 119, 178, 128]
+transfer/res_blocks/res1/layer2/conv/BiasAdd   [None, 119, 178, 128]
+transfer/res_blocks/res2/layer1/conv/BiasAdd   [None, 119, 178, 128]
+transfer/res_blocks/res2/layer2/conv/BiasAdd   [None, 119, 178, 128]
+transfer/res_blocks/res3/layer1/conv/BiasAdd   [None, 119, 178, 128]
+transfer/res_blocks/res3/layer2/conv/BiasAdd   [None, 119, 178, 128]
+transfer/res_blocks/res4/layer1/conv/BiasAdd   [None, 119, 178, 128]
+transfer/res_blocks/res4/layer2/conv/BiasAdd   [None, 119, 178, 128]
+transfer/res_blocks/res5/layer1/conv/BiasAdd   [None, 119, 178, 128]
+transfer/res_blocks/res5/layer2/conv/BiasAdd   [None, 119, 178, 128]
+transfer/conv4/conv2d/BiasAdd   [None, 476, 712, 3]
+WARNING:tensorflow:From /opt/anaconda3/envs/anime3/lib/python3.6/site-packages/tensorflow/python/training/saver.py:1266: checkpoint_exists (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file APIs to check for files with this prefix.
+save path: ./examples/temp/tokikake/stata_0.png
+test_target: ./examples/content/stata.jpg
+transfer/conv1/conv2d/BiasAdd   [None, 679, 1024, 32]
+transfer/conv2/conv2d/BiasAdd   [None, 340, 512, 64]
+transfer/conv3/conv2d/BiasAdd   [None, 170, 256, 128]
+transfer/res_blocks/res1/layer1/conv/BiasAdd   [None, 170, 256, 128]
+transfer/res_blocks/res1/layer2/conv/BiasAdd   [None, 170, 256, 128]
+transfer/res_blocks/res2/layer1/conv/BiasAdd   [None, 170, 256, 128]
+transfer/res_blocks/res2/layer2/conv/BiasAdd   [None, 170, 256, 128]
+transfer/res_blocks/res3/layer1/conv/BiasAdd   [None, 170, 256, 128]
+transfer/res_blocks/res3/layer2/conv/BiasAdd   [None, 170, 256, 128]
+transfer/res_blocks/res4/layer1/conv/BiasAdd   [None, 170, 256, 128]
+transfer/res_blocks/res4/layer2/conv/BiasAdd   [None, 170, 256, 128]
+transfer/res_blocks/res5/layer1/conv/BiasAdd   [None, 170, 256, 128]
+transfer/res_blocks/res5/layer2/conv/BiasAdd   [None, 170, 256, 128]
+transfer/conv4/conv2d/BiasAdd   [None, 680, 1024, 3]
+*** Iteration 0  ====> 
+cur_iter : 0, 
+tar_iter : 41390, 
+batch_size : 4, 
+content_loss : 6226682.0, 
+style_loss : 410497024.0, 
+tv_loss : 6837691.0, 
+total_loss : 423561408.0, 
+gpu_index : 0, 
+
+*** Iteration 100  ====> 
+cur_iter : 100, 
+tar_iter : 41390, 
+batch_size : 4, 
+content_loss : 3645075.25, 
+style_loss : 5471981.0, 
+tv_loss : 1266100.125, 
+total_loss : 10383156.0, 
+gpu_index : 0, 
+
+*** Iteration 200  ====> 
+cur_iter : 200, 
+tar_iter : 41390, 
+batch_size : 4, 
+content_loss : 3631493.75, 
+style_loss : 5388554.5, 
+tv_loss : 1189404.875, 
+total_loss : 10209453.0, 
+gpu_index : 0, 
+
+*** Iteration 300  ====> 
+cur_iter : 300, 
+tar_iter : 41390, 
+batch_size : 4, 
+content_loss : 3311474.5, 
+style_loss : 5189314.0, 
+tv_loss : 695117.375, 
+total_loss : 9195905.0, 
+gpu_index : 0, 
+
+*** Iteration 400  ====> 
+cur_iter : 400, 
+tar_iter : 41390, 
+batch_size : 4, 
+content_loss : 3626293.75, 
+style_loss : 4684801.0, 
+tv_loss : 575510.375, 
+total_loss : 8886605.0, 
+gpu_index : 0, 
+
+*** Iteration 500  ====> 
+cur_iter : 500, 
+tar_iter : 41390, 
+batch_size : 4, 
+content_loss : 4239752.5, 
+style_loss : 4241262.5, 
+tv_loss : 968913.375, 
+total_loss : 9449928.0, 
+gpu_index : 0, 
+
+*** Iteration 600  ====> 
+cur_iter : 600, 
+tar_iter : 41390, 
+batch_size : 4, 
+content_loss : 3138070.25, 
+style_loss : 3022121.0, 
+tv_loss : 702690.0625, 
+total_loss : 6862881.0, 
+gpu_index : 0, 
+
+*** Iteration 700  ====> 
+cur_iter : 700, 
+tar_iter : 41390, 
+batch_size : 4, 
+content_loss : 3506027.0, 
+style_loss : 1875558.0, 
+tv_loss : 611451.9375, 
+total_loss : 5993037.0, 
+gpu_index : 0, 
+
+*** Iteration 800  ====> 
+cur_iter : 800, 
+tar_iter : 41390, 
+batch_size : 4, 
+content_loss : 4194206.25, 
+style_loss : 1321465.625, 
+tv_loss : 482200.21875, 
+total_loss : 5997872.0, 
+gpu_index : 0, 
+
+*** Iteration 900  ====> 
+cur_iter : 900, 
+tar_iter : 41390, 
+batch_size : 4, 
+content_loss : 2926593.0, 
+style_loss : 1501642.625, 
+tv_loss : 627421.875, 
+total_loss : 5055657.5, 
+gpu_index : 0, 
+
+*** Iteration 1000  ====> 
+cur_iter : 1000, 
+tar_iter : 41390, 
+batch_size : 4, 
+content_loss : 3399818.5, 
+style_loss : 1252418.75, 
+tv_loss : 340827.6875, 
+total_loss : 4993064.5, 
+gpu_index : 0, 
+
+*** Iteration 1100  ====> 
+cur_iter : 1100, 
+tar_iter : 41390, 
+batch_size : 4, 
+content_loss : 3832879.5, 
+style_loss : 791823.4375, 
+tv_loss : 154697.125, 
+total_loss : 4779400.0, 
+gpu_index : 0, 
+
+*** Iteration 1200  ====> 
+cur_iter : 1200, 
+tar_iter : 41390, 
+batch_size : 4, 
+content_loss : 3201467.75, 
+style_loss : 853000.3125, 
+tv_loss : 66956.8046875, 
+total_loss : 4121424.75, 
+gpu_index : 0, 
+
+*** Iteration 1300  ====> 
+cur_iter : 1300, 
+tar_iter : 41390, 
+batch_size : 4, 
+content_loss : 2635415.75, 
+style_loss : 847623.8125, 
+tv_loss : 74857.125, 
+total_loss : 3557896.5, 
+gpu_index : 0, 
+
+*** Iteration 1400  ====> 
+cur_iter : 1400, 
+tar_iter : 41390, 
+batch_size : 4, 
+content_loss : 2676612.25, 
+style_loss : 1000406.4375, 
+tv_loss : 59351.24609375, 
+total_loss : 3736370.0, 
+gpu_index : 0, 
+
+*** Iteration 1500  ====> 
+cur_iter : 1500, 
+tar_iter : 41390, 
+batch_size : 4, 
+content_loss : 2688515.75, 
+style_loss : 924748.9375, 
+tv_loss : 71752.9921875, 
+total_loss : 3685017.75, 
+gpu_index : 0, 
+
+*** Iteration 1600  ====> 
+cur_iter : 1600, 
+tar_iter : 41390, 
+batch_size : 4, 
+content_loss : 2563994.0, 
+style_loss : 775913.6875, 
+tv_loss : 70960.8828125, 
+total_loss : 3410868.75, 
+gpu_index : 0, 
+
+*** Iteration 1700  ====> 
+cur_iter : 1700, 
+tar_iter : 41390, 
+batch_size : 4, 
+content_loss : 2407986.25, 
+style_loss : 1009201.375, 
+tv_loss : 67778.5625, 
+total_loss : 3484966.0, 
+gpu_index : 0, 
+
+*** Iteration 1800  ====> 
+cur_iter : 1800, 
+tar_iter : 41390, 
+batch_size : 4, 
+content_loss : 2517690.25, 
+style_loss : 744026.125, 
+tv_loss : 55563.25390625, 
+total_loss : 3317279.75, 
+gpu_index : 0, 
+
+*** Iteration 1900  ====> 
+cur_iter : 1900, 
+tar_iter : 41390, 
+batch_size : 4, 
+content_loss : 2183768.5, 
+style_loss : 946877.625, 
+tv_loss : 67252.75, 
+total_loss : 3197898.75, 
+gpu_index : 0, 
+
+=====================================
+              Model saved!           
+=====================================
+
+save path: ./examples/temp/tokikake/chicago_2000.png
+test_target: ./examples/content/chicago.jpg
+transfer/conv1/conv2d/BiasAdd   [None, 474, 712, 32]
+transfer/conv2/conv2d/BiasAdd   [None, 237, 356, 64]
+transfer/conv3/conv2d/BiasAdd   [None, 119, 178, 128]
+transfer/res_blocks/res1/layer1/conv/BiasAdd   [None, 119, 178, 128]
+transfer/res_blocks/res1/layer2/conv/BiasAdd   [None, 119, 178, 128]
+transfer/res_blocks/res2/layer1/conv/BiasAdd   [None, 119, 178, 128]
+transfer/res_blocks/res2/layer2/conv/BiasAdd   [None, 119, 178, 128]
+transfer/res_blocks/res3/layer1/conv/BiasAdd   [None, 119, 178, 128]
+transfer/res_blocks/res3/layer2/conv/BiasAdd   [None, 119, 178, 128]
+transfer/res_blocks/res4/layer1/conv/BiasAdd   [None, 119, 178, 128]
+transfer/res_blocks/res4/layer2/conv/BiasAdd   [None, 119, 178, 128]
+transfer/res_blocks/res5/layer1/conv/BiasAdd   [None, 119, 178, 128]
+transfer/res_blocks/res5/layer2/conv/BiasAdd   [None, 119, 178, 128]
+transfer/conv4/conv2d/BiasAdd   [None, 476, 712, 3]
+save path: ./examples/temp/tokikake/stata_2000.png
+test_target: ./examples/content/stata.jpg
+transfer/conv1/conv2d/BiasAdd   [None, 679, 1024, 32]
+transfer/conv2/conv2d/BiasAdd   [None, 340, 512, 64]
+transfer/conv3/conv2d/BiasAdd   [None, 170, 256, 128]
+transfer/res_blocks/res1/layer1/conv/BiasAdd   [None, 170, 256, 128]
+transfer/res_blocks/res1/layer2/conv/BiasAdd   [None, 170, 256, 128]
+transfer/res_blocks/res2/layer1/conv/BiasAdd   [None, 170, 256, 128]
+transfer/res_blocks/res2/layer2/conv/BiasAdd   [None, 170, 256, 128]
+transfer/res_blocks/res3/layer1/conv/BiasAdd   [None, 170, 256, 128]
+transfer/res_blocks/res3/layer2/conv/BiasAdd   [None, 170, 256, 128]
+transfer/res_blocks/res4/layer1/conv/BiasAdd   [None, 170, 256, 128]
+transfer/res_blocks/res4/layer2/conv/BiasAdd   [None, 170, 256, 128]
+transfer/res_blocks/res5/layer1/conv/BiasAdd   [None, 170, 256, 128]
+transfer/res_blocks/res5/layer2/conv/BiasAdd   [None, 170, 256, 128]
+transfer/conv4/conv2d/BiasAdd   [None, 680, 1024, 3]
+*** Iteration 2000  ====> 
+cur_iter : 2000, 
+tar_iter : 41390, 
+batch_size : 4, 
+content_loss : 2907658.5, 
+style_loss : 1128541.375, 
+tv_loss : 60135.76953125, 
+total_loss : 4096335.75, 
+gpu_index : 0, 
+
+...
